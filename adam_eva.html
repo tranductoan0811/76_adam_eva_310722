@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<h3 style="margin-left: 70px;">Ứng dụng nhỏ mô phỏng câu chuyện Adam và Eva</h3>
+</head>
+<body>
+  <script src="human.js"></script>
+  <script src="apple.js"></script>
+  <script src="eatApple.js"></script>
+<fieldset style="width: 550px;">
+  <p>Nhập tên <input type="text" id="input_name" placeholder="Enter name" style="text-align : center;"></p>
+  <p>Giới tính
+    <select id="sex">
+      <option></option>
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+    </select>
+  </p>
+  <p>Cân nặng <input type="number" id="input_weight" placeholder="Enter weight" style="text-align : center;"> ( kg )
+  </p>
+  <button onclick="display();">Hiện thị thông tin chung</button>
+  <button onclick="sayWords();">Nói chuyện</button>
+  <button onclick="eatApple()">Eat Apple / Check Apple - Human Weight</button>
+  
+  <p>Kết quả
+    <br><span id="result_name"></span>
+    <br><span id="result_gender"></span>
+    <br><span id="result_weight"></span>
+    <br><span id="eat_apple"></span>
+    <br><span id="say"></span>
+  </p>
+
+</fieldset>
+
+</body>
+
+
+</html>
+
+<script>
+ 
+var name1 = '';
+var gender1 = '';
+var weight1 = 0;
+
+function getValue() {
+  name1 = document.getElementById("input_name").value;
+  gender1 = document.getElementById("sex").value;
+  weight1 = document.getElementById("input_weight").value;
+}
+
+function display() {
+  getValue();
+  
+  document.getElementById("result_name").innerHTML = " my name is: " + name1;
+  document.getElementById("result_gender").innerHTML = " Giới tính : " + gender1;
+  document.getElementById("result_weight").innerHTML = " Cân nặng: " + weight1 + " (kg)" + "<br>" + "********" + "<br>";
+}
+
+getValue();
+
+let myapple = new Apple(10);
+let myhuman = new Human(name1, gender1, weight1);
+ 
+function sayWords() {
+  
+  document.getElementById("say").innerHTML = "<br>" + " say to your friend: " 
+                                              + myhuman.sayString();
+}
+</script>
